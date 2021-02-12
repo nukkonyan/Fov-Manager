@@ -6,7 +6,7 @@ public	Plugin	myinfo	=	{
 	name		=	"[ANY] Fov Manager",
 	author		=	"Tk /id/Teamkiller324",
 	description	=	"Manage the viewmodel fov",
-	version		=	"1.0.0",
+	version		=	"1.0.1",
 	url			=	"https://steamcommunity.com/id/Teamkiller324"
 }
 
@@ -14,7 +14,7 @@ public	Plugin	myinfo	=	{
 
 int		PlayerFOV	[MAXPLAYERS+1];
 
-char	fovPrefix[1024];
+char	fovPrefix[128];
 
 ConVar	fovEnable,
 		fovMinimum,

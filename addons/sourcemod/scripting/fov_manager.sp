@@ -28,14 +28,14 @@ public	void	OnPluginStart()	{
 	
 	FormatEx(fovPrefix,	sizeof(fovPrefix),	"%t{default}",	"fov_prefix",	LANG_SERVER);
 	
-	RegConsoleCmd("sm_fov",			PlayerSetFov,			"Set a custom fov on yourself");
+	RegConsoleCmd("sm_fov",		PlayerSetFov,			"Set a custom fov on yourself");
 	RegConsoleCmd("sm_randomfov",	PlayerSetRandomFov,		"Set a random fov on yourself");
 	
 	fovEnable	=	CreateConVar("sm_fovmanager_enable",		"1",	"Enable / Disable Unrestricted FOV",		FCVAR_NOTIFY, true, 0.0, true, 1.0);
 	fovMinimum	=	CreateConVar("sm_fovmanager_minimum",		"10",	"Minimum Unrestricted FOV",					FCVAR_NOTIFY, true, 10.0, true, 360.0);
 	fovMaximum	=	CreateConVar("sm_fovmanager_maximum",		"180",	"Maximum Unrestricted FOV",					FCVAR_NOTIFY, true, 10.0, true, 360.0);
 	
-	fovCookie	=	new Cookie("sm_fovmanager_cookie",			"Fov Manager",		CookieAccess_Private);	//Originally Tk Unrestricted FOV [Random Commands Plugin]
+	fovCookie	=	new Cookie("sm_fovmanager_cookie",	"Fov Manager",		CookieAccess_Private);	//Originally Tk Unrestricted FOV [Random Commands Plugin]
 	
 	HookEvent("player_spawn",	PlayerFovSpawn,	EventHookMode_Pre);
 }

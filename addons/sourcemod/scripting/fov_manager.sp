@@ -1,6 +1,6 @@
 #include	<multicolors>
 #include	<clientprefs>
-#include	<tk>
+#include	<tklib>
 
 public	Plugin	myinfo	=	{
 	name		=	"[ANY] Fov Manager",

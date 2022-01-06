@@ -20,6 +20,9 @@ sm_fovmanager_minimum
 
 sm_fovmanager_maximum
 	- Maximum fov limit. Default: 360
+
+sm_fovmanager_prefix
+	- The prefix of the ingame messages. Default: {lightgreen}[FOV Manager]
 ```
 
 ## Commands

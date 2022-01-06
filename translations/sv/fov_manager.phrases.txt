@@ -1,0 +1,42 @@
+"Phrases"
+{
+	"fov_usage"
+	{
+		"#format"	"{1:d},{2:d}"
+		"sv"		"Användning: {lightgreen}sm_fov {orange}<tal mellan {yellow}{1} {orange}och {yellow}{2}{orange}>"
+	}
+	
+	"fov_error"
+	{
+		"sv"		"Detta kommando skall helst användas inom spelet"
+	}
+	
+	"fov_error_minimum"
+	{
+		"#format"	"{1:d}"
+		"sv"		"FOV måste vara mer än {lightgreen}{1}"
+	}
+	
+	"fov_error_maximum"
+	{
+		"#format"	"{1:d}"
+		"sv"		"FOV kan inte vara högre än {lightgreen}{1}"
+	}
+	
+	"fov_set"
+	{
+		"#format"	"{1:d}"
+		"sv"		"Satt FOV till {orange}{1}"
+	}
+	
+	"fov_disabled"
+	{
+		"sv"		"{red}Stängde av {default}Orestrikterade FOV"
+	}
+	
+	"fov_randomized"
+	{
+		"#format"	"{1:d}"
+		"sv"		"Randomiserade fov med numret av {1}"
+	}
+}

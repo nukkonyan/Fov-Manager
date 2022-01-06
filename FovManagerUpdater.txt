@@ -1,0 +1,35 @@
+"Updater"
+{
+	"Information"
+	{
+		"Version"
+		{
+			"Latest"	"1.1.0"
+		}
+		
+		"Notes"	"More info @ https://github.com/Teamkiller324/Fov-Manager"
+		"Notes"	"Updated code."
+		"Notes"	"Added Updater support."
+		"Notes"	"Changed prefix to be a cvar than a translation phrase."
+	}
+	
+	"Files"
+	{
+		"Patch"
+		{
+			"Plugin"	"Path_SM/plugins/fov_manager.smx"
+			
+			"Plugin"	"Path_SM/translations/fov_manager.phrases.txt"
+			"Plugin"	"Path_SM/translations/sv/fov_manager.phrases.txt"
+			
+			"Source"	"Path_SM/scripting/fov_manager.sp"
+		}
+		
+		"Plugin"	"Path_SM/plugins/fov_manager.smx"
+		
+		"Plugin"	"Path_SM/translations/fov_manager.phrases.txt"
+		"Plugin"	"Path_SM/translations/sv/fov_manager.phrases.txt"
+		
+		"Source"	"Path_SM/scripting/fov_manager.sp"
+	}
+}

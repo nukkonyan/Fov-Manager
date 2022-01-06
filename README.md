@@ -7,10 +7,8 @@ Manage your viewmodel with commands.
 AlliedModders Post: https://forums.alliedmods.net/showthread.php?p=2736253
 
 ## Requirement
-```
 [Tk Libraries](https://github.com/Teamkiller324/Tklib) (To compile the plugin)
 [Updater](https://github.com/Teamkiller324/Updater) (To compile with Updater support)
-```
 
 ## Cvars
 ```

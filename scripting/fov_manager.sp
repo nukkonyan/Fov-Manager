@@ -53,6 +53,7 @@ public void Updater_OnPluginUpdated()	{
 #endif
 
 void PrefixCallback(ConVar cvar, const char[] oldvalue, const char[] newvalue)	{
+	cvar.GetString(Prefix, sizeof(Prefix));
 	Format(Prefix, sizeof(Prefix), "%s{default}", Prefix);
 }
 

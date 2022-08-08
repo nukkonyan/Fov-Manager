@@ -9,7 +9,7 @@ public Plugin myinfo = {
 	name = "[ANY] FOV Manager",
 	author = _tklib_author,
 	description = "Manage the viewmodel fov.",
-	version = "1.2.0",
+	version = "1.2.1",
 	url = _tklib_author_url
 }
 

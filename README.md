@@ -2,7 +2,7 @@
 Standalone module taken from Random Commands Plugin (not released yet)
 Manage your viewmodel with commands.
 
-### Latest Version: 1.2.0
+### Latest Version: 1.2.1
 
 AlliedModders Post: https://forums.alliedmods.net/showthread.php?p=2736253
 

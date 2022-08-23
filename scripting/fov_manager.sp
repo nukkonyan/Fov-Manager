@@ -1,15 +1,14 @@
+#define _tklib_definitions
 #include <tklib>
 #include <multicolors>
 #include <clientprefs>
 #undef REQUIRE_PLUGIN
-#tryinclude <updater>
-#define REQUIRE_PLUGIN
 
 public Plugin myinfo = {
 	name = "[ANY] FOV Manager",
 	author = _tklib_author,
 	description = "Manage the viewmodel fov.",
-	version = "1.2.1",
+	version = "1.2.2",
 	url = _tklib_author_url
 }
 
@@ -20,8 +19,6 @@ int AccountID[MAXCLIENTS];
 char Prefix[128];
 ConVar fovEnable, fovMinimum, fovMaximum, fovPrefix;
 Cookie fovCookie;
-
-#define PluginUrl "https://raw.githubusercontent.com/Teamkiller324/Fov-Manager/main/FovManagerUpdater.txt"
 
 public void OnPluginStart() {
 	LoadTranslations("fov_manager.phrases");
@@ -42,25 +39,14 @@ public void OnPluginStart() {
 	fovCookie = new Cookie("sm_fovmanager_cookie", "Fov Manager", CookieAccess_Private);
 	
 	HookEvent(EVENT_PLAYER_SPAWN, Player_Spawn);
-	
-	#if defined _updater_included
-	Updater_AddPlugin(PluginUrl);
-	#endif
 }
-
-#if defined _updater_included
-public void Updater_OnPluginUpdated()	{
-	PrintToServer("[FOV Manager] Update has been installed, restarting..");
-	Updater_ReloadPlugin();
-}
-#endif
 
 void PrefixCallback(ConVar cvar, const char[] oldvalue, const char[] newvalue)	{
 	cvar.GetString(Prefix, sizeof(Prefix));
 	Format(Prefix, sizeof(Prefix), "%s{default}", Prefix);
 }
 
-public void OnClientPostAdminCheck(int client)	{
+public void OnClientPostAdminCheck(int client) {
 	LoadFovCookies(client);
 }
 
@@ -74,7 +60,7 @@ void LoadFovCookies(int client)	{
 		SetPlayerFovValue(client, StringToInt(cookie));
 }
 
-public void OnClientDisconnect(int client)	{
+public void OnClientDisconnect(int client) {
 	if(!Tklib_IsValidClient(client, true))
 		return;
 	

@@ -1,40 +1,35 @@
 "Phrases"
 {
-	"Fov Usage"
+	"#FOV_Usage"
 	{
 		"#format"	"{1:d},{2:d}"
 		"en"		"Usage: {lightgreen}sm_fov {orange}<value between {yellow}{1} {orange}and {yellow}{2}{orange}>"
 	}
 	
-	"Fov Ingame Error"
-	{
-		"en"		"This command should be used ingame"
-	}
-	
-	"Fov Error Minimum"
+	"#FOV_Error_Minimum"
 	{
 		"#format"	"{1:d}"
 		"en"		"The FOV must be greater than {lightgreen}{1}"
 	}
 	
-	"Fov Error Maximum"
+	"#FOV_Error_Maximum"
 	{
 		"#format"	"{1:d}"
 		"en"		"The FOV cannot be higher than {lightgreen}{1}"
 	}
 	
-	"Fov Set"
+	"#FOV_Set"
 	{
 		"#format"	"{1:d}"
 		"en"		"Set the FOV to {orange}{1}"
 	}
 	
-	"Fov Disabled"
+	"#FOV_Disabled"
 	{
 		"en"		"Turned {orange}off {default}Unrestricted FOV"
 	}
 	
-	"Fov Randomized"
+	"#FOV_Randomized"
 	{
 		"#format"	"{1:d}"
 		"en"		"Randomized the fov with the number of {1}"

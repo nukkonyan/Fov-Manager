@@ -1,17 +1,12 @@
 "Phrases"
 {
-	"Fov Usage"
+	"#FOV_Usage"
 	{
 		"#format"	"{1:d},{2:d}"
 		"sv"		"Användning: {lightgreen}sm_fov {orange}<tal mellan {yellow}{1} {orange}och {yellow}{2}{orange}>"
 	}
 	
-	"Fov Error Ingame Only"
-	{
-		"sv"		"Detta kommando skall helst användas inom spelet"
-	}
-	
-	"Fov Error Minimum"
+	"#FOV_Error_Maximum"
 	{
 		"#format"	"{1:d}"
 		"sv"		"FOV måste vara mer än {lightgreen}{1}"
@@ -23,18 +18,18 @@
 		"sv"		"FOV kan inte vara högre än {lightgreen}{1}"
 	}
 	
-	"Fov Set"
+	"#FOV_Set"
 	{
 		"#format"	"{1:d}"
 		"sv"		"Satt FOV till {orange}{1}"
 	}
 	
-	"Fov Disabled"
+	"#FOV_Disabled"
 	{
 		"sv"		"{red}Stängde av {default}Orestrikterade FOV"
 	}
 	
-	"Fov Randomized"
+	"#FOV_Randomized"
 	{
 		"#format"	"{1:d}"
 		"sv"		"Gjorde sitt fov slumpmässigt med numret av {1}"

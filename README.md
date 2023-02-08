@@ -2,13 +2,11 @@
 Standalone module taken from Random Commands Plugin (not released yet)
 Manage your viewmodel with commands.
 
-### Latest Version: 1.2.2
+### Latest Version: 1.2.3
 
 AlliedModders Post: https://forums.alliedmods.net/showthread.php?p=2736253
 
 ## Requirement
-[Tk Libraries](https://github.com/Teamkiller324/Tklib) (To compile the plugin)
-
 [Multicolors](https://github.com/Bara/Multi-Colors) (To compile the plugin)
 
 ## Cvars

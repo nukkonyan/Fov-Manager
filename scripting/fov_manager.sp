@@ -7,7 +7,7 @@ public Plugin myinfo = {
 	name = "[ANY] FOV Manager",
 	author = "Tk /id/Teamkiller324",
 	description = "Manage the viewmodel fov.",
-	version = "1.2.3",
+	version = "1.2.4",
 	url = "https://steamcommunity.com/id/Teamkiller324"
 }
 
@@ -29,16 +29,16 @@ public void OnPluginStart() {
 	fovMinimum = CreateConVar("sm_fovmanager_minimum", "10", "FOV Manager - Minimum Unrestricted FOV", _, true, 10.0, true, 360.0);
 	fovMaximum = CreateConVar("sm_fovmanager_maximum", "180", "FOV Manager - Maximum Unrestricted FOV", _, true, 10.0, true, 360.0);
 	fovPrefix = CreateConVar("sm_fovmanager_prefix", "{lightgreen}[Fov Manager]", "FOV Manager - Chat prefix");
-	fovPrefix.AddChangeHook(view_as<ConVarChanged>(PrefixCallback));
+	fovPrefix.AddChangeHook(PrefixCallback);
 	fovPrefix.GetString(Prefix, sizeof(Prefix));
 	Format(Prefix, sizeof(Prefix), "%s{default}", Prefix);
 	
 	fovCookie = new Cookie("sm_fovmanager_cookie", "Fov Manager", CookieAccess_Private);
 	
-	HookEvent("player_spawn", view_as<EventHook>(Player_Spawn));
+	HookEvent("player_spawn", Player_Spawn);
 }
 
-void PrefixCallback(ConVar cvar) {
+void PrefixCallback(ConVar cvar, const char[] oldvalue, const char[] newvalue) {
 	cvar.GetString(Prefix, sizeof(Prefix));
 	Format(Prefix, sizeof(Prefix), "%s{default}", Prefix);
 }
@@ -63,11 +63,11 @@ public void OnClientDisconnect(int client) {
 }
 
 Action FovCmd(int client, int args) {	
-	if(!fovEnable.BoolValue) return;
+	if(!fovEnable.BoolValue) return Plugin_Handled;
 	
 	if(client == 0) {
 		CReplyToCommand(client, "[FOV Manager] This command may only be used ingame");
-		return;
+		return Plugin_Handled;
 	}
 	
 	int	fov	= GetCmdInt(1);
@@ -79,20 +79,20 @@ Action FovCmd(int client, int args) {
 		char buffer[16];
 		IntToString(0, buffer, sizeof(buffer));
 		fovCookie.Set(client, buffer);
-		return;
+		return Plugin_Handled;
 	}
 	else if(args < 1) {
 		CPrintToChat(client, "%s %t", Prefix, "#FOV_Usage", fovMinimum.IntValue, fovMaximum.IntValue);
-		return;
+		return Plugin_Handled;
 	}
 	
 	if(fov < fovMinimum.IntValue) {
 		CPrintToChat(client, "%s %t", Prefix, "#FOV_Error_Minimum", fovMinimum.IntValue);
-		return;
+		return Plugin_Handled;
 	}
 	else if(fov > fovMaximum.IntValue) {
 		CPrintToChat(client, "%s %t", Prefix, "#FOV_Error_Maximum", fovMaximum.IntValue);
-		return;
+		return Plugin_Handled;
 	}
 	
 	SetFOV(client, fov);
@@ -102,14 +102,16 @@ Action FovCmd(int client, int args) {
 	IntToString(fov, val, sizeof(val));
 	fovCookie.Set(client, val);
 	CPrintToChat(client, "%s %t", Prefix, "#FOV_Set", fov);
+	
+	return Plugin_Handled;
 }
 
 Action RandomFovCmd(int client, int args) {
-	if(!fovEnable.BoolValue) return;
+	if(!fovEnable.BoolValue) return Plugin_Handled;
 		
 	if(client == 0) {
 		CReplyToCommand(client, "[FOV Manager] This command may only be used ingame");
-		return;
+		return Plugin_Handled;
 	}
 	
 	int	picker = GetRandomInt(fovMinimum.IntValue, fovMaximum.IntValue);
@@ -117,18 +119,19 @@ Action RandomFovCmd(int client, int args) {
 	g_FOV[client] = picker;
 	
 	CPrintToChat(client, "%s %t", Prefix, "#FOV_Randomized", picker);
+	return Plugin_Handled;
 }
 
-void Player_Spawn(Event event) {
+void Player_Spawn(Event event, const char[] event_name, bool dontBroadcast) {
 	int	userid = event.GetInt("userid");
 	if(userid < 1) return;
-	CreateTimer(0.1, Timer_Spawn, userid, TIMER_DATA_HNDL_CLOSE);
+	CreateTimer(0.1, Timer_Spawn, userid);
 }
 
 Action Timer_Spawn(Handle timer, int userid) {
 	int client = GetClientOfUserId(userid);
-	if(!IsValidClient(client)) return;
-	if(g_FOV[client] > -1) SetFOV(client, g_FOV[client]);
+	if(IsValidClient(client)) if(g_FOV[client] > -1) SetFOV(client, g_FOV[client]);
+	return Plugin_Handled;
 }
 
 bool IsValidClient(int client) {
